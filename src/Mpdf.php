@@ -15477,7 +15477,8 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 			}
 
 			$num = $this->_getStyledNumber($counter, $listitemtype, true);
-
+			$num = implode('.', array_slice($this->listcounter, 0, $this->listlvl));
+			
 			if ($listitemposition == 'inside') {
 				$e = $num . $this->list_number_suffix . $spacer;
 				$this->_saveTextBuffer($e);
