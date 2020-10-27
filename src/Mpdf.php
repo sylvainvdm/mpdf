@@ -43,7 +43,9 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 
 	const SCALE = 72 / 25.4;
 
-	var $useFixedNormalLineHeight; // mPDF 6
+    var $useNestedNumberedList;  // Custom numbered list addition
+
+    var $useFixedNormalLineHeight; // mPDF 6
 	var $useFixedTextBaseline; // mPDF 6
 	var $adjustFontDescLineheight; // mPDF 6
 	var $interpolateImages; // mPDF 6
@@ -15477,7 +15479,9 @@ class Mpdf implements \Psr\Log\LoggerAwareInterface
 			}
 
 			$num = $this->_getStyledNumber($counter, $listitemtype, true);
-			$num = implode('.', array_slice($this->listcounter, 0, $this->listlvl));
+            if ($this->useNestedNumberedList) {
+                $num = implode('.', array_slice($this->listcounter, 0, $this->listlvl));
+            }
 			
 			if ($listitemposition == 'inside') {
 				$e = $num . $this->list_number_suffix . $spacer;

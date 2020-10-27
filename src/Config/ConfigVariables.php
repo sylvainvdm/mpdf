@@ -19,6 +19,9 @@ class ConfigVariables
 
 		$this->defaults = [
 
+            // Custom elements
+            'useNestedNumberedList' => false,
+
 			// PAGING
 			'mirrorMargins' => 0,
 			'forcePortraitMargins' => false,
